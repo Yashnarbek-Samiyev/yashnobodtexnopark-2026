@@ -141,6 +141,30 @@ function switchYear(year) {
     animateValue('new-residents', 0, data.newResidents, 800);
     animateValue('jobs-created', 0, data.jobsCreated, 1000);
     
+    // Update services dropdown based on year
+    const servicesContainer = document.getElementById('services-dropdown-content');
+    if (servicesContainer) {
+        servicesContainer.innerHTML = '';
+        const activeServices = year === 2025 ? servicesData.slice(0, 6) : servicesData;
+        
+        activeServices.forEach((s, index) => {
+            const el = document.createElement('div');
+            el.className = 'service-item';
+            
+            // 2026-yilda qo'shilgan 7 va 8 chi xizmatlar uchun
+            const isNew = year === 2026 && index >= 6;
+            const newBadge = isNew ? `<span class="new-badge">Янги</span>` : '';
+            
+            if (isNew) {
+                el.classList.add('new-service-highlight');
+            }
+            
+            el.innerHTML = `<span class="service-index">${index + 1}.</span> <div class="service-name">${s.name} ${newBadge}</div>`;
+            el.onclick = () => openModal(s.name, s.icon, s.desc);
+            servicesContainer.appendChild(el);
+        });
+    }
+    
     const getUsdStr = (valInBln) => {
         const mlnUsd = (valInBln * 1000) / currentExchangeRate;
         return mlnUsd.toFixed(1).replace('.', ',');
@@ -302,18 +326,6 @@ const servicesData = [
 ];
 
 window.addEventListener('DOMContentLoaded', () => {
-    // Xizmatlar menyusini HTML ga render qilish
-    const servicesContainer = document.getElementById('services-dropdown-content');
-    if (servicesContainer) {
-        servicesData.forEach((s, index) => {
-            const el = document.createElement('div');
-            el.className = 'service-item';
-            el.innerHTML = `<span>${index + 1}.</span> ${s.name}`;
-            el.onclick = () => openModal(s.name, s.icon, s.desc);
-            servicesContainer.appendChild(el);
-        });
-    }
-
     // 1. Darhol default kursda ko'rsatish (kuttirmaslik uchun)
     switchYear(2025);
 
