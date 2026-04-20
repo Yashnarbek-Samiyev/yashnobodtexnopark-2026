@@ -240,7 +240,7 @@ body, html {
 }
 
 .card-header span {
-    font-size: clamp(0.8rem, 1.6vh, 1rem);
+    font-size: clamp(0.7rem, 1.3vh, 0.88rem);
     font-weight: 800;
     color: #64748B;
     text-transform: uppercase;
@@ -249,11 +249,11 @@ body, html {
 
 /* Main Number Display */
 .main-stat h2 {
-    font-size: clamp(2.5rem, 6.5vh, 5.5rem);
+    font-size: clamp(2rem, 5vh, 4rem);
     font-weight: 900;
     color: #0D1B3E;
     line-height: 1;
-    margin: 1.2vh 0 0.3vh;
+    margin: 0.5vh 0 0.2vh;
     letter-spacing: -1px;
 }
 
@@ -277,10 +277,10 @@ body, html {
 }
 
 .main-stat p {
-    font-size: clamp(0.9rem, 1.8vh, 1.1rem);
+    font-size: clamp(0.75rem, 1.4vh, 0.9rem);
     color: #64748B;
     font-weight: 600;
-    margin-bottom: 1.5vh;
+    margin-bottom: 0.8vh;
 }
 
 /* Sub stats list */
@@ -309,14 +309,14 @@ body, html {
 }
 
 .sub-stat-item .label {
-    font-size: clamp(0.8rem, 1.5vh, 0.95rem);
+    font-size: clamp(0.7rem, 1.25vh, 0.85rem);
     color: #64748B;
     font-weight: 600;
 }
 
 .sub-stat-item .value {
     font-weight: 900;
-    font-size: clamp(1.1rem, 2.2vh, 1.5rem);
+    font-size: clamp(0.95rem, 1.8vh, 1.25rem);
     color: #0D1B3E;
 }
 
@@ -408,6 +408,89 @@ body, html {
 
 .flag { font-size: 1.3rem; }
 
+/* =========================================================
+   Sectors Header — "17 та фаолият соҳалари сони"
+========================================================= */
+.sectors-header {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 0.6vh;
+    margin-bottom: 0.4vh;
+}
+
+.sectors-count {
+    font-size: clamp(1.4rem, 3vh, 2.2rem);
+    font-weight: 900;
+    color: #0A2560;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+.sectors-label {
+    font-size: clamp(0.65rem, 1.2vh, 0.78rem);
+    font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   Sectors List — Residents Card
+========================================================= */
+.sectors-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6vh 0.6vw;
+    margin-top: 0.8vh;
+    overflow-y: auto;
+    max-height: 22vh;
+    padding-right: 2px;
+}
+
+.sectors-list::-webkit-scrollbar {
+    width: 3px;
+}
+.sectors-list::-webkit-scrollbar-track { background: transparent; }
+.sectors-list::-webkit-scrollbar-thumb {
+    background: #C9A84C;
+    border-radius: 10px;
+}
+
+.sector-tag {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0.75vh 0.8vw;
+    background: #F8FAFC;
+    border-radius: 8px;
+    font-size: clamp(0.72rem, 1.35vh, 0.88rem);
+    font-weight: 600;
+    color: #1E293B;
+    border-left: 3px solid #2563EB;
+    transition: background 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sector-tag:hover {
+    background: #EEF2F7;
+    border-left-color: #C9A84C;
+}
+
+.sector-tag i {
+    width: 14px;
+    height: 14px;
+    color: #2563EB;
+    flex-shrink: 0;
+}
+
+.sector-tag:hover i {
+    color: #C9A84C;
+}
+
 
 /* News Ticker */
 .news-ticker-container {
@@ -494,6 +577,93 @@ body, html {
     color: var(--text-dim);
     font-weight: 600;
     border-top: 1px solid var(--card-border);
+}
+
+/* =========================================================
+   Modal Overlay
+========================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(13, 27, 62, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 450px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 24px;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid #2563EB;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-header-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-title-group i {
+    color: #2563EB;
+    width: 24px;
+    height: 24px;
+}
+
+.modal-header-custom h3 {
+    font-size: 1.25rem;
+    color: #0D1B3E;
+    font-weight: 800;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    display: flex;
+    padding: 4px;
+}
+
+.modal-close:hover {
+    color: #EF4444;
+    transform: rotate(90deg);
+}
+
+.modal-body p {
+    font-size: 0.95rem;
+    color: #334155;
+    line-height: 1.6;
+    font-weight: 500;
 }
 
 /* =========================================================

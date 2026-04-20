@@ -63,13 +63,24 @@
                         <i data-lucide="users"></i>
                         <span>Резидентлар фаолияти</span>
                     </div>
+                    <div class="sectors-header">
+                        <span class="sectors-count">17</span>
+                        <span class="sectors-label">та фаолият соҳалари сони</span>
+                    </div>
+                    <div class="sectors-list" id="sectors-list">
+                        <!-- Dynamic sectors -->
+                    </div>
                     <div class="card-body">
                         <div class="main-stat">
-                            <h2><span id="total-residents">38</span><span class="stat-suffix">та</span></h2>
                             <p>Жами резидентлар</p>
+                            <h2><span id="total-residents">38</span><span class="stat-suffix">та</span></h2>
                         </div>
                     </div>
                     <div class="sub-stats">
+                        <div class="sub-stat-item" id="contacted-row">
+                            <span class="label">Гаплашилган тадбиркорлар</span>
+                            <span class="value"><span id="contacted-count">800</span><span class="stat-suffix-sm">та</span></span>
+                        </div>
                         <div class="sub-stat-item">
                             <span class="label">Аризалар ўрганилди</span>
                             <span class="value"><span id="applied-count">40</span><span class="stat-suffix-sm">та</span></span>
@@ -159,6 +170,24 @@
         <footer class="dashboard-footer">
             <p>&copy; 2025-2026 Яшнобод инновация технопарки | Барча ҳуқуқлар ҳимояланган</p>
         </footer>
+
+        <!-- Modal Overlay -->
+        <div class="modal-overlay" id="sector-modal" onclick="closeModal(event)">
+            <div class="modal-content glass-card" onclick="event.stopPropagation()">
+                <div class="modal-header-custom">
+                    <div class="modal-title-group" id="modal-title-group">
+                        <i data-lucide="cpu"></i>
+                        <h3 id="modal-title">Электроника</h3>
+                    </div>
+                    <button class="modal-close" onclick="closeModal()">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-desc">Маълумот...</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="script.js"></script>

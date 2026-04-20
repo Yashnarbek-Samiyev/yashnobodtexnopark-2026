@@ -5,13 +5,16 @@
 const dashboardData = {
     2025: {
         totalResidents: 38,
+        contactedCount: 800,
         appliedCount: 40,
         newResidents: 21,
         jobsCreated: 1136,
         totalProduction: 894.8,
         domesticSales: 721.1,
         exportSales: 173.7,
-        exportUSD: null,
+        totalUSD: "86.8",
+        domesticUSD: "70.0",
+        exportUSD: "16.9",
         domesticPercent: 80.6,
         exportPercent: 19.4,
         countries: [
@@ -20,22 +23,61 @@ const dashboardData = {
             { name: 'Тожикистон', flag: '🇹🇯' },
             { name: 'Россия', flag: '🇷🇺' }
         ],
+        sectors: [
+            { name: 'Электроника',         icon: 'cpu', desc: 'Электроника ва приборсозлик соҳасида юқори технологик маҳсулотлар, маиший техника ва инновацион қурилмалар ишлаб чиқариш лойиҳалари.' },
+            { name: 'Робототехника',        icon: 'bot', desc: 'Саноат ва маиший роботлар, автоматлаштирилган тизимлар ва сунъий интеллектга асосланган қурилмаларни лойиҳалаштириш.' },
+            { name: 'Озиқ-овқат',          icon: 'utensils', desc: 'Озиқ-овқат саноатида биотехнологиялар, янги турдаги озуқа қўшимчалари ва экологик тоза табиий маҳсулотларни ишлаб чиқариш.' },
+            { name: 'Қурилиш',             icon: 'building-2', desc: 'Инновацион қурилиш материаллари, энергия тежамкор конструкциялар ва замонавий муҳандислик ечимлари асосида қурилиш маҳсулотлари ишлаб чиқариш.' },
+            { name: 'Уй-жой',              icon: 'home', desc: 'Инновацион уй-жой коммуникация тизимлари ("Ақлли уй" технологиялари) ва энергия самарадорлиги юқори бўлган маиший жиҳозлар яратиш.' },
+            { name: 'Экология',            icon: 'leaf', desc: 'Атроф-муҳитни асраш, чиқиндиларни қайта ишлаш ва экологик тоза ("яшил") технологияларни жорий этиш лойиҳалари.' },
+            { name: 'Нефть ва газ',        icon: 'flame', desc: 'Нефть ва газ саноати учун замонавий ускуналар, ресурстежамкор технологиялар ва қайта ишлаш мосламалари ишлаб чиқариш.' },
+            { name: 'Йўл қурилиши',        icon: 'milestone', desc: 'Йўлсозликда ишлатиладиган инновацион қопламалар, йўл белгилари ва мустаҳкам материалларни тадқиқ этиш ва ишлаб чиқариш.' },
+            { name: 'Энергетика',          icon: 'zap', desc: 'Муқобил энергия манбалари (қуёш, шамол), энергия балансини бошқариш тизимлари ва аккумулятор батареялари лойиҳалари.' },
+            { name: 'Қишлоқ хўжалиги',    icon: 'wheat', desc: 'Агротехнологиялар, "Ақлли иссиқхона" тизимлари, сув тежовчи суғориш ускуналари ва инновацион ўғитлар яратиш.' },
+            { name: 'Медицина',            icon: 'stethoscope', desc: 'Биомедицина, тиббий асбоб-ускуналар, фармацевтика маҳсулотлари ва протезлаштириш технологиялари яратиш.' },
+            { name: 'Автомобилсозлик',     icon: 'car', desc: 'Автомобилсозлик учун бутловчи қисмлар, диагностика ускуналари ва электромобиллар инфратузилмаси (зарядлаш станциялари) лойиҳалари.' },
+            { name: 'Иссиқлик ҳимояси',   icon: 'thermometer', desc: 'Иссиқлик ва совуқликни сақловчи изоляция материаллари, термо-панеллар ва саноат печлари қопламаларини ишлаб чиқариш.' },
+            { name: 'Полиграфия',          icon: 'printer', desc: 'Замонавий босмахона хизматлари, 3D принтерлар ёрдамида моделлаштириш ва инновацион қадоқлаш технологиялари жорий этиш.' },
+            { name: 'Кимё',               icon: 'flask-conical', desc: 'Янги авлод кимёвий воситалари, полимерлар, саноат бўёқлари ва аралашмалар ишлаб чиқаришни маҳаллийлаштириш лойиҳалари.' }
+        ],
         news: []
     },
     2026: {
         totalResidents: 42,
+        contactedCount: 500,
         appliedCount: 8,
         newResidents: 4,
         jobsCreated: 102,
         totalProduction: 159.7,
         domesticSales: 112.3,
         exportSales: 47.4,
+        totalUSD: "15.5",
+        domesticUSD: "10.9",
         exportUSD: "4.6",
         domesticPercent: 70.3,
         exportPercent: 29.7,
         countries: [
             { name: 'Қозоғистон', flag: '🇰🇿' },
-            { name: 'Қирғизистон', flag: '🇰🇬' }
+            { name: 'Қирғизистон', flag: '🇰🇬' },
+            { name: 'Тожикистон', flag: '🇹🇯' },
+            { name: 'Россия', flag: '🇷🇺' }
+        ],
+        sectors: [
+            { name: 'Электроника',         icon: 'cpu', desc: 'Электроника ва приборсозлик соҳасида юқори технологик маҳсулотлар, маиший техника ва инновацион қурилмалар ишлаб чиқариш лойиҳалари.' },
+            { name: 'Робототехника',        icon: 'bot', desc: 'Саноат ва маиший роботлар, автоматлаштирилган тизимлар ва сунъий интеллектга асосланган қурилмаларни лойиҳалаштириш.' },
+            { name: 'Озиқ-овқат',          icon: 'utensils', desc: 'Озиқ-овқат саноатида биотехнологиялар, янги турдаги озуқа қўшимчалари ва экологик тоза табиий маҳсулотларни ишлаб чиқариш.' },
+            { name: 'Қурилиш',             icon: 'building-2', desc: 'Инновацион қурилиш материаллари, энергия тежамкор конструкциялар ва замонавий муҳандислик ечимлари асосида қурилиш маҳсулотлари ишлаб чиқариш.' },
+            { name: 'Уй-жой',              icon: 'home', desc: 'Инновацион уй-жой коммуникация тизимлари ("Ақлли уй" технологиялари) ва энергия самарадорлиги юқори бўлган маиший жиҳозлар яратиш.' },
+            { name: 'Экология',            icon: 'leaf', desc: 'Атроф-муҳитни асраш, чиқиндиларни қайта ишлаш ва экологик тоза ("яшил") технологияларни жорий этиш лойиҳалари.' },
+            { name: 'Нефть ва газ',        icon: 'flame', desc: 'Нефть ва газ саноати учун замонавий ускуналар, ресурстежамкор технологиялар ва қайта ишлаш мосламалари ишлаб чиқариш.' },
+            { name: 'Йўл қурилиши',        icon: 'milestone', desc: 'Йўлсозликда ишлатиладиган инновацион қопламалар, йўл белгилари ва мустаҳкам материалларни тадқиқ этиш ва ишлаб чиқариш.' },
+            { name: 'Энергетика',          icon: 'zap', desc: 'Муқобил энергия манбалари (қуёш, шамол), энергия балансини бошқариш тизимлари ва аккумулятор батареялари лойиҳалари.' },
+            { name: 'Қишлоқ хўжалиги',    icon: 'wheat', desc: 'Агротехнологиялар, "Ақлли иссиқхона" тизимлари, сув тежовчи суғориш ускуналари ва инновацион ўғитлар яратиш.' },
+            { name: 'Медицина',            icon: 'stethoscope', desc: 'Биомедицина, тиббий асбоб-ускуналар, фармацевтика маҳсулотлари ва протезлаштириш технологиялари яратиш.' },
+            { name: 'Автомобилсозлик',     icon: 'car', desc: 'Автомобилсозлик учун бутловчи қисмлар, диагностика ускуналари ва электромобиллар инфратузилмаси (зарядлаш станциялари) лойиҳалари.' },
+            { name: 'Иссиқлик ҳимояси',   icon: 'thermometer', desc: 'Иссиқлик ва совуқликни сақловчи изоляция материаллари, термо-панеллар ва саноат печлари қопламаларини ишлаб чиқариш.' },
+            { name: 'Полиграфия',          icon: 'printer', desc: 'Замонавий босмахона хизматлари, 3D принтерлар ёрдамида моделлаштириш ва инновацион қадоқлаш технологиялари жорий этиш.' },
+            { name: 'Кимё',               icon: 'flask-conical', desc: 'Янги авлод кимёвий воситалари, полимерлар, саноат бўёқлари ва аралашмалар ишлаб чиқаришни маҳаллийлаштириш лойиҳалари.' }
         ],
         news: [
             "I. АСОСИЙ ФАОЛИЯТ: Тошкент шаҳар ҳокимлиги ва Савдо-саноат палатасига инновацион фаолият билан шуғулланувчи тадбиркорлик субъектлари рўйхатини шакллантириш учун мурожаат қилинди.",
@@ -59,7 +101,7 @@ const dashboardData = {
 /**
  * Animate numbers
  */
-function animateValue(id, start, end, duration, isFloat = false) {
+function animateValue(id, start, end, duration, isFloat = false, suffix = '') {
     const obj = document.getElementById(id);
     if (!obj) return;
     
@@ -70,9 +112,9 @@ function animateValue(id, start, end, duration, isFloat = false) {
         let val = progress * (end - start) + start;
         
         if (isFloat) {
-            obj.innerHTML = val.toFixed(1).replace('.', ',');
+            obj.innerHTML = val.toFixed(1).replace('.', ',') + suffix;
         } else {
-            obj.innerHTML = Math.floor(val).toLocaleString();
+            obj.innerHTML = Math.floor(val).toLocaleString() + suffix;
         }
         
         if (progress < 1) {
@@ -98,7 +140,24 @@ function switchYear(year) {
     animateValue('applied-count', 0, data.appliedCount, 800);
     animateValue('new-residents', 0, data.newResidents, 800);
     animateValue('jobs-created', 0, data.jobsCreated, 1000);
-    animateValue('total-production', 0, data.totalProduction, 1000, true);
+    
+    const getUsdStr = (valInBln) => {
+        // млрд сўм -> млн сум -> (mln som / kurs)
+        const mlnUsd = (valInBln * 1000) / currentExchangeRate;
+        return mlnUsd.toFixed(1).replace('.', ',');
+    };
+
+    let totalUsdSuffix = ` <span class="stat-suffix" style="color:#1DA462; font-size:0.4em;">(${getUsdStr(data.totalProduction)} млн $)</span>`;
+    animateValue('total-production', 0, data.totalProduction, 1000, true, `<span class="stat-suffix" style="color:#C9A84C;">млрд сўм</span>${totalUsdSuffix}`);
+
+    // Gaplashilgan tadbirkorlar — faqat 2025
+    const contactedRow = document.getElementById('contacted-row');
+    if (data.contactedCount) {
+        animateValue('contacted-count', 0, data.contactedCount, 800);
+        contactedRow.style.display = 'flex';
+    } else {
+        contactedRow.style.display = 'none';
+    }
 
     // Update Title Tagline based on year
     const dashTitle = document.getElementById('dashboard-title');
@@ -112,13 +171,9 @@ function switchYear(year) {
     const domesticEl = document.getElementById('domestic-sales');
     const exportEl = document.getElementById('export-sales');
     
-    domesticEl.innerText = data.domesticSales.toString().replace('.', ',');
+    domesticEl.innerHTML = `${data.domesticSales.toString().replace('.', ',')} <span style="color:#64748B; font-size:0.9em;">млрд сўм</span> <span class="usd-text" style="color:#1DA462; font-size:0.8em;">(${getUsdStr(data.domesticSales)} млн $)</span>`;
     
-    if (data.exportUSD) {
-        exportEl.innerHTML = `${data.exportSales.toString().replace('.', ',')} <span class="usd-text">(${data.exportUSD} млн $)</span>`;
-    } else {
-        exportEl.innerText = data.exportSales.toString().replace('.', ',');
-    }
+    exportEl.innerHTML = `${data.exportSales.toString().replace('.', ',')} <span style="color:#64748B; font-size:0.9em;">млрд сўм</span> <span class="usd-text" style="color:#1DA462; font-size:0.8em;">(${getUsdStr(data.exportSales)} млн $)</span>`;
 
     // Update bars
     document.querySelector('.bar-fill.domestic').style.width = data.domesticPercent + '%';
@@ -154,8 +209,60 @@ function switchYear(year) {
         newsContainer.style.display = 'none';
         newsContent.innerHTML = '';
     }
+
+    // Render sectors
+    const sectorsList = document.getElementById('sectors-list');
+    if (sectorsList) {
+        sectorsList.innerHTML = '';
+        if (data.sectors && data.sectors.length > 0) {
+            data.sectors.forEach(s => {
+                const tag = document.createElement('div');
+                tag.className = 'sector-tag';
+                tag.innerHTML = `<i data-lucide="${s.icon}"></i><span>${s.name}</span>`;
+                tag.onclick = () => openModal(s.name, s.icon, s.desc);
+                sectorsList.appendChild(tag);
+            });
+        }
+        lucide.createIcons();
+    }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+/**
+ * Modal Logic for Sectors
+ */
+function openModal(name, icon, desc) {
+    const modal = document.getElementById('sector-modal');
+    document.getElementById('modal-desc').innerText = desc;
+    
+    const titleGroup = document.getElementById('modal-title-group');
+    titleGroup.innerHTML = `<i data-lucide="${icon}"></i><h3 id="modal-title">${name}</h3>`;
+    
+    lucide.createIcons();
+    modal.classList.add('active');
+}
+
+function closeModal(event) {
+    if (event) {
+        // Prevent closing if clicking inside the modal content
+        if (event.target.closest('.modal-content') && !event.target.closest('.modal-close')) {
+            return;
+        }
+    }
+    document.getElementById('sector-modal').classList.remove('active');
+}
+
+let currentExchangeRate = 12600; // Default (agar API ishlamasa)
+
+window.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('https://open.er-api.com/v6/latest/USD');
+        const d = await response.json();
+        if (d && d.rates && d.rates.UZS) {
+            currentExchangeRate = parseFloat(d.rates.UZS);
+        }
+    } catch (e) {
+        console.warn('Real vaqt dollar kursini olishda xatolik yuz berdi. Asosiy kurs ishlatilmoqda.', e);
+    }
+    
     switchYear(2025);
 });
