@@ -135,6 +135,12 @@ body, html {
     padding: 1vh 2vw;
 }
 
+.dropdowns-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
 /* Services Dropdown */
 .services-dropdown {
     position: relative;
@@ -851,8 +857,11 @@ body, html {
         padding: 2vh 5vw;
     }
 
-    .header-band-controls {
+    .dropdowns-group {
         flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        align-items: center;
     }
 
     .dropdown-text {

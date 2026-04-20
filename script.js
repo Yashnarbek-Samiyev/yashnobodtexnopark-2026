@@ -325,7 +325,33 @@ const servicesData = [
     }
 ];
 
+// === Yangi qo'shilgan: Asosiy Rezidentlar Loyihalari ===
+const residentsData = [
+    {
+        name: "“ARHAT INKS” МЧЖ",
+        icon: "flask-conical",
+        desc: "«Яшнобод» инновация технопарки резиденти “ARHAT INKS” МЧЖ “Босма бўёқлар ишлаб чиқариш” инновацион лойиҳаси билан фаолият юритиб келмоқда. Лойиҳанинг умумий қиймати 3,1 минг АҚШ долларини ташкил этади. “ARHAT INKS” МЧЖнинг инвестиция лойиҳасига кўра ишлаб чиқариш зоналарини таъмирлаш-реконструкция ишлари тугатилиб, жами 2025-26 йилларда 3,9 млрд. сўмга асбоб-ускуналар, қурилиш монтаж ишлари учун инвестиция киритиб, 101,3 млрд. сўмлик инновацион маҳсулот ишлаб чиқарилди ва 6,8 млн. АҚШ доллар миқдоридаги маҳсулотлар қўшни мамлакатларга экспорт қилинди. Шартнома асосида 2026 йил 1-чорак учун технопарк ҳисоб рақамига 32,7 млн. сўм ажратма ўтказди."
+    },
+    {
+        name: "“ALWOOD” МЧЖ",
+        icon: "hammer",
+        desc: "“ALWOOD” МЧЖ “Қурилиш учун метал қолип тизимлари ва ёрдамчи конструкциялар ишлаб чиқаришни маҳаллийлаштириш ва ташкил этиш” инновацион лойиҳаси билан 10,2 млрд. сўмлик инновацион маҳсулот ишлаб чиқариб, ички бозорга 7,9 млрд. сўм ва ташқи бозорга 189,8 минг АҚШ доллар миқдоридаги маҳсулотни Тожикистонга сотди. Шартнома асосида 2026 йил 1-чорак учун технопарк ҳисоб рақамига 10,1 млн. сўм ажратма ўтказди. Бундан ташқари 2026 йил 1-чорак ҳолатига ўз ишлаб чиқариш эҳтиёжи учун 30 977 АҚШ долларида асбоб-ускуналар Хитой давлатидан олиб келиниб, 356,6 млн. сўм маблағ божхона тўловларидан озод этилди. Тежалган маблағ корхона капиталини кўпайтиришга киритилди."
+    }
+];
+
 window.addEventListener('DOMContentLoaded', () => {
+    // Renderni bajarish (Rezidentlar menyusi)
+    const resContainer = document.getElementById('residents-dropdown-content');
+    if (resContainer) {
+        residentsData.forEach((r, index) => {
+            const el = document.createElement('div');
+            el.className = 'service-item';
+            el.innerHTML = `<span class="service-index">${index + 1}.</span> <div class="service-name">${r.name}</div>`;
+            el.onclick = () => openModal(r.name, r.icon, r.desc);
+            resContainer.appendChild(el);
+        });
+    }
+
     // 1. Darhol default kursda ko'rsatish (kuttirmaslik uchun)
     switchYear(2025);
 
@@ -347,16 +373,30 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-// Dropdown mantiqi (oynani istalgan joyga bosganda yopish uchun)
+// Barcha dropdownlarni to'g'ri ishlashi uchun umumiy mantiq
 window.addEventListener('click', (e) => {
-    const dropdownBtn = e.target.closest('#servicesDropdownBtn');
-    const dropdown = document.getElementById('services-dropdown');
+    const clickedBtn = e.target.closest('.services-dropdown-btn');
     
-    if (dropdownBtn) {
-        dropdown.classList.toggle('open');
+    // Agar tugma bosilgan bo'lsa
+    if (clickedBtn) {
+        const parentDropdown = clickedBtn.closest('.services-dropdown');
+        const wasOpen = parentDropdown.classList.contains('open');
+        
+        // Barcha dropdownlarni avval yopish
+        document.querySelectorAll('.services-dropdown.open').forEach(d => {
+            d.classList.remove('open');
+        });
+        
+        // Agar yopiq bo'lsa ochish
+        if (!wasOpen) {
+            parentDropdown.classList.add('open');
+        }
     } else {
-        if (dropdown && dropdown.classList.contains('open') && !e.target.closest('.services-dropdown-content')) {
-            dropdown.classList.remove('open');
+        // Ekrandagi boshqa joy bosilganda yoki content ichida
+        if (!e.target.closest('.services-dropdown-content')) {
+            document.querySelectorAll('.services-dropdown.open').forEach(d => {
+                d.classList.remove('open');
+            });
         }
     }
 });
