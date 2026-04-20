@@ -155,6 +155,14 @@ body, html {
     gap: 8px;
     transition: all 0.2s ease;
     font-family: inherit;
+    max-width: 100%;
+}
+
+.dropdown-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 350px;
 }
 
 .services-dropdown-btn:hover, .services-dropdown.open .services-dropdown-btn {
@@ -768,6 +776,10 @@ body, html {
     body { overflow-y: auto; }
     .dashboard-container { height: auto; min-height: 100vh; }
 
+    .dropdown-text {
+        max-width: 250px;
+    }
+
     .stats-grid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
@@ -791,6 +803,16 @@ body, html {
 
     .header-band-controls {
         justify-content: center;
+        gap: 15px;
+    }
+
+    .dropdown-text {
+        max-width: 160px;
+        font-size: 0.9rem;
+    }
+    
+    .services-dropdown-content {
+        min-width: 350px;
     }
 
     .stats-grid { grid-template-columns: 1fr; }
@@ -807,6 +829,24 @@ body, html {
         flex-direction: column;
         gap: 20px;
         padding: 2vh 5vw;
+    }
+
+    .header-band-controls {
+        flex-direction: column;
+    }
+
+    .dropdown-text {
+        max-width: 130px;
+    }
+
+    .services-dropdown-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .services-dropdown-content {
+        min-width: 280px;
+        left: -10vw; /* Center roughly on mobile */
     }
 
     .logo-group {
