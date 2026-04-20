@@ -130,9 +130,96 @@ body, html {
 /* BAND 3 — Controls Row */
 .header-band-controls {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 1vh 2vw;
+}
+
+/* Services Dropdown */
+.services-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.services-dropdown-btn {
+    background: rgba(255, 255, 255, 0.05); /* Same as year-selector bg */
+    border: 1px solid var(--header-border);
+    color: var(--header-text-dim);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.services-dropdown-btn:hover, .services-dropdown.open .services-dropdown-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+
+.services-dropdown-btn i {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.services-dropdown.open .services-dropdown-btn .chevron {
+    transform: rotate(180deg);
+}
+
+.services-dropdown-content {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: #FFFFFF;
+    color: #0D1B3E;
+    min-width: 480px;
+    max-width: 90vw;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    padding: 12px 0;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+}
+
+.services-dropdown.open .services-dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.service-item {
+    padding: 10px 20px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    border-bottom: 1px solid #EEF2F7;
+    display: flex;
+    gap: 10px;
+    color: #334155;
+    font-weight: 500;
+}
+
+.service-item:last-child {
+    border-bottom: none;
+}
+
+.service-item:hover {
+    background: #F8FAFC;
+    color: #2563EB;
+}
+
+.service-item span {
+    font-weight: 800;
+    color: #C9A84C;
+    min-width: 18px;
 }
 
 /* Controls */

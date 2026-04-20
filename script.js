@@ -279,3 +279,17 @@ window.addEventListener('DOMContentLoaded', () => {
             console.warn('API dan dollar kursini olishda xatolik:', e);
         });
 });
+
+// Dropdown mantiqi (oynani istalgan joyga bosganda yopish uchun)
+window.addEventListener('click', (e) => {
+    const dropdownBtn = e.target.closest('#servicesDropdownBtn');
+    const dropdown = document.getElementById('services-dropdown');
+    
+    if (dropdownBtn) {
+        dropdown.classList.toggle('open');
+    } else {
+        if (dropdown && dropdown.classList.contains('open') && !e.target.closest('.services-dropdown-content')) {
+            dropdown.classList.remove('open');
+        }
+    }
+});
