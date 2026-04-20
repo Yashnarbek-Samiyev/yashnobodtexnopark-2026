@@ -142,13 +142,12 @@ function switchYear(year) {
     animateValue('jobs-created', 0, data.jobsCreated, 1000);
     
     const getUsdStr = (valInBln) => {
-        // млрд сўм -> млн сум -> (mln som / kurs)
         const mlnUsd = (valInBln * 1000) / currentExchangeRate;
         return mlnUsd.toFixed(1).replace('.', ',');
     };
 
-    let totalUsdSuffix = ` <span class="stat-suffix" style="color:#1DA462; font-size:0.4em;">(${getUsdStr(data.totalProduction)} млн $)</span>`;
-    animateValue('total-production', 0, data.totalProduction, 1000, true, `<span class="stat-suffix" style="color:#C9A84C;">млрд сўм</span>${totalUsdSuffix}`);
+    let totalUsdSuffix = `<span style="display:block; color:#1DA462; font-size:0.35em; margin-top:2px; font-weight:700;">(${getUsdStr(data.totalProduction)} млн $)</span>`;
+    animateValue('total-production', 0, data.totalProduction, 1000, true, `<span class="stat-suffix" style="color:#C9A84C; font-size:0.4em;">млрд сўм</span>${totalUsdSuffix}`);
 
     // Gaplashilgan tadbirkorlar — faqat 2025
     const contactedRow = document.getElementById('contacted-row');
@@ -171,9 +170,15 @@ function switchYear(year) {
     const domesticEl = document.getElementById('domestic-sales');
     const exportEl = document.getElementById('export-sales');
     
-    domesticEl.innerHTML = `${data.domesticSales.toString().replace('.', ',')} <span style="color:#64748B; font-size:0.9em;">млрд сўм</span> <span class="usd-text" style="color:#1DA462; font-size:0.8em;">(${getUsdStr(data.domesticSales)} млн $)</span>`;
+    domesticEl.innerHTML = `
+        ${data.domesticSales.toString().replace('.', ',')} <span style="color:#64748B; font-size:0.85em; font-weight:600;">млрд сўм</span>
+        <span style="display:block; color:#1DA462; font-size:0.85em; font-weight:700;">(${getUsdStr(data.domesticSales)} млн $)</span>
+    `;
     
-    exportEl.innerHTML = `${data.exportSales.toString().replace('.', ',')} <span style="color:#64748B; font-size:0.9em;">млрд сўм</span> <span class="usd-text" style="color:#1DA462; font-size:0.8em;">(${getUsdStr(data.exportSales)} млн $)</span>`;
+    exportEl.innerHTML = `
+        ${data.exportSales.toString().replace('.', ',')} <span style="color:#64748B; font-size:0.85em; font-weight:600;">млрд сўм</span>
+        <span style="display:block; color:#1DA462; font-size:0.85em; font-weight:700;">(${getUsdStr(data.exportSales)} млн $)</span>
+    `;
 
     // Update bars
     document.querySelector('.bar-fill.domestic').style.width = data.domesticPercent + '%';
@@ -251,18 +256,26 @@ function closeModal(event) {
     document.getElementById('sector-modal').classList.remove('active');
 }
 
-let currentExchangeRate = 12600; // Default (agar API ishlamasa)
+let currentExchangeRate = 12600; // Default
 
-window.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const response = await fetch('https://open.er-api.com/v6/latest/USD');
-        const d = await response.json();
-        if (d && d.rates && d.rates.UZS) {
-            currentExchangeRate = parseFloat(d.rates.UZS);
-        }
-    } catch (e) {
-        console.warn('Real vaqt dollar kursini olishda xatolik yuz berdi. Asosiy kurs ishlatilmoqda.', e);
-    }
-    
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Darhol default kursda ko'rsatish (kuttirmaslik uchun)
     switchYear(2025);
+
+    // 2. Orqa fonda (background) real kursni olish
+    fetch('https://open.er-api.com/v6/latest/USD')
+        .then(res => res.json())
+        .then(d => {
+            if (d && d.rates && d.rates.UZS) {
+                currentExchangeRate = parseFloat(d.rates.UZS);
+                // Qaysi yil tanlanganini aniqlab, sahifani yangi kurs bilan yangilash
+                const activeBtn = document.querySelector('.year-btn.active');
+                const currentYear = activeBtn ? parseInt(activeBtn.innerText) : 2025;
+                // Animate false or fast (here we just run switchYear again)
+                switchYear(currentYear);
+            }
+        })
+        .catch(e => {
+            console.warn('API dan dollar kursini olishda xatolik:', e);
+        });
 });
