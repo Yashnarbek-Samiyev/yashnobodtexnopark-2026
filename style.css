@@ -171,6 +171,27 @@ body, html {
     max-width: 350px;
 }
 
+.dropdown-badge {
+    background-color: #10B981;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 12px;
+    margin-left: 2px;
+    margin-right: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(16, 185, 129, 0.4);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 .services-dropdown-btn:hover, .services-dropdown.open .services-dropdown-btn {
     background: rgba(255, 255, 255, 0.1);
     color: #FFFFFF;

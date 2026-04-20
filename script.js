@@ -163,6 +163,16 @@ function switchYear(year) {
             el.onclick = () => openModal(s.name, s.icon, s.desc);
             servicesContainer.appendChild(el);
         });
+        
+        // +2 Badge ni faqat 2026 yilda ko'rsatish
+        const servicesBadge = document.getElementById('services-badge');
+        if (servicesBadge) {
+            if (year === 2026) {
+                servicesBadge.style.display = 'inline-flex';
+            } else {
+                servicesBadge.style.display = 'none';
+            }
+        }
     }
     
     const getUsdStr = (valInBln) => {
