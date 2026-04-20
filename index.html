@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яшнобод инновация технопарки | 2025 Сарҳисоби</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <main class="dashboard-container">
+        <!-- Header Section (New 3-Band Design) -->
+        <header class="dashboard-header">
+
+            <!-- Band 1: Logos -->
+            <div class="header-band-logos">
+                <div class="logo-group">
+                    <img src="agency_logo.png" alt="Агентлиги" class="header-logo">
+                    <div class="logo-caption">
+                        <span class="logo-caption-top">ИННОВАЦИОН</span>
+                        <span class="logo-caption-main">РИВОЖЛАНИШ</span>
+                        <span class="logo-caption-top">АГЕНТЛИГИ</span>
+                    </div>
+                </div>
+
+                <div class="header-logo-divider"></div>
+
+                <div class="logo-group">
+                    <img src="logo.png" alt="Яшнобод" class="header-logo">
+                    <div class="logo-caption">
+                        <span class="logo-caption-main">“ЯШНОБОД”</span>
+                        <span class="logo-caption-top">ИННОВАЦИЯ ТЕХНОПАРКИ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Band 2: Main Title -->
+            <div class="header-band-title">
+                <h2 id="dashboard-title">“ЯШНОБОД” ИННОВАЦИЯ ТЕХНОПАРКИ ВА РЕЗИДЕНТЛАРИ ФАОЛИЯТИ ТЎҒРИСИДА МАЪЛУМОТ</h2>
+            </div>
+
+            <!-- Band 3: Year Selector -->
+            <div class="header-band-controls">
+                <div class="year-selector">
+                    <button class="year-btn active" onclick="switchYear(2025)">2025</button>
+                    <button class="year-btn" onclick="switchYear(2026)">2026</button>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- Main Content (Light) -->
+        <section class="main-content-section">
+            <section class="stats-grid">
+                <!-- Residents Card -->
+                <div class="card glass-card residents-card" id="card-residents">
+                    <div class="card-header">
+                        <i data-lucide="users"></i>
+                        <span>Резидентлар фаолияти</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="main-stat">
+                            <h2><span id="total-residents">38</span><span class="stat-suffix">та</span></h2>
+                            <p>Жами резидентлар</p>
+                        </div>
+                    </div>
+                    <div class="sub-stats">
+                        <div class="sub-stat-item">
+                            <span class="label">Аризалар ўрганилди</span>
+                            <span class="value"><span id="applied-count">40</span><span class="stat-suffix-sm">та</span></span>
+                        </div>
+                        <div class="sub-stat-item highlight">
+                            <span class="label">Мақом берилди</span>
+                            <span class="value"><span id="new-residents">21</span><span class="stat-suffix-sm">та</span></span>
+                        </div>
+                        <div class="info-footer">
+                            <p class="small-text">Барча лойиҳалар экстерриториаллик асосида фаолият юритмоқда</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Economic Card - Production -->
+                <div class="card glass-card production-card">
+                    <div class="card-header">
+                        <i data-lucide="trending-up"></i>
+                        <span>Иқтисодий кўрсаткичлар (млрд сўм)</span>
+                    </div>
+                    <div class="production-flex">
+                        <div class="main-stat">
+                            <h2 id="total-production">894,8</h2>
+                            <p>Умумий ишлаб чиқариш ҳажми</p>
+                        </div>
+                        <div class="production-breakdown">
+                            <div class="breakdown-item">
+                                <div class="row-flex">
+                                    <span>Ички бозор: <span id="domestic-sales">721,1</span></span>
+                                </div>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill domestic" style="width: 80.6%;"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="row-flex">
+                                    <span>Экспорт: <span id="export-sales">173,7</span></span>
+                                </div>
+                                <div class="breakdown-bar">
+                                    <div class="bar-fill export" style="width: 19.4%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs Card -->
+                <div class="card glass-card jobs-card">
+                    <div class="card-header">
+                        <i data-lucide="briefcase"></i>
+                        <span>Инсон капитали</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="main-stat">
+                            <h2><span id="jobs-created">1136</span><span class="stat-suffix">та</span></h2>
+                            <p>Яратилган иш ўринлари</p>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Geography -->
+                <div class="card glass-card export-card">
+                    <div class="card-header">
+                        <i data-lucide="globe"></i>
+                        <span>Экспорт давлатлари</span>
+                    </div>
+                    <div class="countries-list">
+                        <!-- Dynamic -->
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- News Ticker for text-based highlights -->
+        <div class="news-ticker-container" id="news-container" style="display: none;">
+            <div class="ticker-badge">Янгиликлар:</div>
+            <div class="ticker-wrap">
+                <div class="ticker-move" id="news-ticker-content">
+                    <!-- Dynamic Text -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="dashboard-footer">
+            <p>&copy; 2025-2026 Яшнобод инновация технопарки | Барча ҳуқуқлар ҳимояланган</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
