@@ -636,6 +636,64 @@ body, html {
 }
 
 
+/* =========================================================
+   Jobs Card Visual Graphics
+========================================================= */
+.jobs-content-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-right: 1vw;
+}
+
+.jobs-content-flex .main-stat {
+    flex: 1;
+}
+
+.jobs-icon-wrapper.two-icons-mode {
+    flex-shrink: 0;
+    width: auto;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+.custom-icon-box {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-icon-box:hover {
+    transform: translateY(-5px);
+}
+
+.custom-icon-box svg {
+    width: 65%;
+    height: 65%;
+}
+
+.blue-box {
+    background: #E0E7FF;
+    color: #2563EB;
+    border: 2px solid #C7D2FE;
+}
+
+.green-box {
+    background: #D1FAE5;
+    color: #059669;
+    border: 2px solid #A7F3D0;
+}
+
 /* News Ticker */
 .news-ticker-container {
     height: 4vh;

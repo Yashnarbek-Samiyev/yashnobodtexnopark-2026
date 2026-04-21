@@ -158,13 +158,44 @@
                         <i data-lucide="briefcase"></i>
                         <span>Инсон капитали</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body jobs-content-flex">
                         <div class="main-stat">
                             <h2><span id="jobs-created">1136</span><span class="stat-suffix">та</span></h2>
                             <p>Яратилган иш ўринлари</p>
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 100%;"></div>
+                        <div class="jobs-icon-wrapper two-icons-mode">
+                            <!-- Qo'lida sumka ushlagan xodim ikonasi -->
+                            <div class="custom-icon-box blue-box">
+                                <svg viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Odam (Xodim) shakli -->
+                                    <circle cx="24" cy="18" r="10" />
+                                    <path d="M4 56 C4 40 14 32 24 32 C34 32 40 38 41 46 L41 56 Z" />
+                                    <!-- Sumka (Briefcase) shakli -->
+                                    <rect x="34" y="38" width="26" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="4" />
+                                    <!-- Sumka tutqichi -->
+                                    <path d="M42 38 V33 C42 31 44 31 47 31 H51 C54 31 56 31 56 33 V38" fill="none" stroke="currentColor" stroke-width="3" />
+                                    <!-- Sumka yopuvchi qulf -->
+                                    <rect x="45" y="38" width="4" height="4" fill="currentColor" />
+                                </svg>
+                            </div>
+
+                            <!-- O'suvchi grafik strelka bilan (Bar chart + Arrow) -->
+                            <div class="custom-icon-box green-box">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Bar Chart ustunlari -->
+                                    <rect x="8" y="40" width="10" height="20" rx="1" fill="currentColor" opacity="0.4" />
+                                    <rect x="24" y="28" width="10" height="32" rx="1" fill="currentColor" opacity="0.6" />
+                                    <rect x="40" y="16" width="10" height="44" rx="1" fill="currentColor" opacity="0.8" />
+                                    
+                                    <!-- Strelka orqasini tozalovchi Outline (Cut-out) -->
+                                    <path d="M2 42 L24 20 L36 32 L58 10" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                                    
+                                    <!-- O'suvchi Strelka (Arrow) -->
+                                    <path d="M2 42 L24 20 L36 32 L58 10" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <!-- Strelka Uchi -->
+                                    <polygon points="46 8, 62 6, 60 22" fill="currentColor" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
