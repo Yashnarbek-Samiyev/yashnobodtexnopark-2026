@@ -1046,7 +1046,7 @@ body, html {
         grid-auto-rows: auto;
     }
     
-    .residents-card, .grid-column-wrapper {
+    .residents-card, .grid-column-wrapper, .grid-column-wrapper:last-child {
         grid-column: span 1;
         grid-row: auto;
     }
