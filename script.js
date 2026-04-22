@@ -143,37 +143,60 @@ function switchYear(year) {
     
     // Update services dropdown based on year
     const servicesContainer = document.getElementById('services-dropdown-content');
-    if (servicesContainer) {
-        servicesContainer.innerHTML = '';
-        const activeServices = year === 2025 ? servicesData.slice(0, 6) : servicesData;
+    const mainListContainer = document.getElementById('services-main-list');
+    
+    // Yil tanlanganda qo'shiladigan logika
+    const activeServices = year === 2025 ? servicesData.slice(0, 6) : servicesData;
+    
+    if (servicesContainer) servicesContainer.innerHTML = '';
+    if (mainListContainer) mainListContainer.innerHTML = '';
+    
+    activeServices.forEach((s, index) => {
+        const isNew = year === 2026 && index >= 6;
+        const newBadge = isNew ? `<span class="new-badge">Янги</span>` : '';
         
-        activeServices.forEach((s, index) => {
+        // 1. Dropdown Header uchun
+        if (servicesContainer) {
             const el = document.createElement('div');
             el.className = 'service-item';
-            
-            // 2026-yilda qo'shilgan 7 va 8 chi xizmatlar uchun
-            const isNew = year === 2026 && index >= 6;
-            const newBadge = isNew ? `<span class="new-badge">Янги</span>` : '';
-            
-            if (isNew) {
-                el.classList.add('new-service-highlight');
-            }
+            if (isNew) el.classList.add('new-service-highlight');
             
             el.innerHTML = `<span class="service-index">${index + 1}.</span> <div class="service-name">${s.name} ${newBadge}</div>`;
             el.onclick = () => openModal(s.name, s.icon, s.desc);
             servicesContainer.appendChild(el);
-        });
-        
-        // +2 Badge ni faqat 2026 yilda ko'rsatish
-        const servicesBadge = document.getElementById('services-badge');
-        if (servicesBadge) {
-            if (year === 2026) {
-                servicesBadge.style.display = 'inline-flex';
-            } else {
-                servicesBadge.style.display = 'none';
-            }
         }
-    }
+        
+        // 2. Main split-card (chap taraf) uchun
+        if (mainListContainer) {
+            const mEl = document.createElement('div');
+            mEl.className = 'main-service-row';
+            if (isNew) mEl.classList.add('new-row-highlight');
+            
+            mEl.innerHTML = `
+                <div class="ms-left">
+                    <span class="ms-index">${index + 1}.</span>
+                    <i data-lucide="${s.icon}" class="ms-icon"></i>
+                    <span class="ms-name">${s.name}</span>
+                </div>
+                <div class="ms-right">
+                    ${newBadge}
+                </div>
+            `;
+            mEl.onclick = () => openModal(s.name, s.icon, s.desc);
+            mainListContainer.appendChild(mEl);
+        }
+    });
+
+    // +2 Badgelarni boshqarish
+    const servicesBadge = document.getElementById('services-badge');
+    const servicesBadgeMain = document.getElementById('services-badge-main');
+    
+    const displayStyle = (year === 2026) ? 'inline-flex' : 'none';
+    if (servicesBadge) servicesBadge.style.display = displayStyle;
+    if (servicesBadgeMain) servicesBadgeMain.style.display = displayStyle;
+
+    // Hozirgi script elementlariga iconkalarni qo'llash
+    lucide.createIcons();
     
     const getUsdStr = (valInBln) => {
         const mlnUsd = (valInBln * 1000) / currentExchangeRate;

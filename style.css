@@ -29,7 +29,7 @@ body, html {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* No scroll allowed */
+    overflow: hidden; /* Prevent scrolling strictly on desktop */
     background-color: var(--bg-main);
     color: var(--text-main);
 }
@@ -59,8 +59,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4vw;
-    padding: 1.8vh 3vw;
+    gap: 3vw;
+    padding: 1.2vh 3vw;
     border-bottom: 1px solid rgba(201, 168, 76, 0.3); /* Subtle gold separator */
 }
 
@@ -110,7 +110,7 @@ body, html {
 
 /* BAND 2 — Full-Width Centered Title */
 .header-band-title {
-    padding: 1.5vh 4vw;
+    padding: 1vh 4vw;
     text-align: center;
     background: rgba(255, 255, 255, 0.04);
     border-bottom: 1px solid rgba(201, 168, 76, 0.2);
@@ -132,7 +132,7 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1vh 2vw;
+    padding: 0.8vh 2vw;
 }
 
 .dropdowns-group {
@@ -185,6 +185,13 @@ body, html {
     justify-content: center;
     box-shadow: 0 2px 5px rgba(16, 185, 129, 0.4);
     animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-badge.white-badge {
+    background-color: #FFFFFF;
+    color: #0A2560;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 @keyframes popIn {
@@ -309,10 +316,10 @@ body, html {
 /* Main Content — Light Premium Section */
 .main-content-section {
     flex: 1;
-    padding: 1.8vh 2vw;
+    padding: 1.2vh 2vw;
     display: flex;
     flex-direction: column;
-    gap: 1.5vh;
+    gap: 1.2vh;
     background: #EEF2F7;
     overflow: hidden;
 }
@@ -321,13 +328,19 @@ body, html {
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 1.4fr 1fr;
-    grid-template-rows: 1fr 1fr;
     gap: 1.8vh;
+    align-content: stretch; /* Stretch the wrappers down completely */
+    align-items: stretch;
 }
 
 /* Grid Spanning */
-.residents-card { grid-row: span 2; }
-.production-card { grid-column: span 2; }
+.residents-card { grid-column: span 1; height: 100%; }
+.grid-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8vh;
+    height: 100%;
+}
 
 /* =========================================================
    CARDS — Premium Redesign
@@ -338,7 +351,8 @@ body, html {
     padding: 2vh 2vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 1.5vh;
     box-shadow: 0 2px 12px rgba(13, 27, 62, 0.08);
     border: none;
     border-left: 5px solid #0A2560; /* Navy left accent */
@@ -363,6 +377,7 @@ body, html {
 
 /* Accent left border colors per card type */
 .residents-card  { border-left-color: #0A2560; }
+.services-card   { border-left-color: #F59E0B; } /* Orange */
 .production-card { border-left-color: #C9A84C; } /* Gold */
 .jobs-card       { border-left-color: #1DA462; } /* Green */
 .export-card     { border-left-color: #2563EB; } /* Blue */
@@ -472,15 +487,92 @@ body, html {
     font-style: italic;
 }
 
-/* =========================================================
-   Production Card — Breakdown Bars
-========================================================= */
-.production-flex {
+/* Removed split-layout-wrapper as it is no longer used */
+
+.services-summary { flex: 1.1; padding-right: 1.5vw; }
+.economic-summary { flex: 0.9; padding-left: 1vw; }
+
+.split-divider {
+    width: 2px;
+    background: #E2E8F0;
+    margin: 1vh 0;
+}
+
+.col-header {
     display: flex;
-    align-items: flex-start;
-    gap: 3vw;
-    margin-top: 0.5vh;
-    flex: 1;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2vh;
+}
+.col-header i {
+    color: #2563EB;
+    width: 22px;
+    height: 22px;
+}
+.col-header span {
+    font-size: clamp(0.75rem, 1.4vh, 0.95rem);
+    font-weight: 800;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.services-main-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vh;
+    padding-right: 4px;
+}
+
+.main-service-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9vh 0.8vw;
+    background: #F8FAFC;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.main-service-row:hover {
+    background: #EEF2F7;
+    border-left-color: #2563EB;
+}
+
+.main-service-row.new-row-highlight {
+    border-left-color: #C9A84C;
+    background: #FFFBEF;
+}
+
+.ms-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.ms-index {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748B;
+}
+.ms-icon {
+    width: 15px;
+    height: 15px;
+    color: #2563EB;
+}
+.new-row-highlight .ms-icon { color: #C9A84C; }
+
+.ms-name {
+    font-size: clamp(0.68rem, 1.3vh, 0.85rem);
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.ms-right .new-badge {
+    padding: 3px 6px;
+    font-size: 0.65rem;
+    margin-left: 5px;
 }
 
 .production-breakdown { flex: 1; }
@@ -873,19 +965,41 @@ body, html {
 
 /* =========================================================
    RESPONSIVE DESIGN (Moslashuvchanlik)
-   1. Computer (> 1200px) - Base CSS (above)
-   2. Laptop (< 1200px)
-   3. Tablet / Flanshet (< 900px)
-   4. Phone / Mobil (< 600px)
+   1. Computer (> 1400px) - Base CSS (above)
+   2. Laptop (< 1400px)
+   3. Tablet / Flanshet (< 1024px)
+   4. Phone / Mobil (< 768px)
 ========================================================= */
 
-/* LAPTOP */
-@media (max-width: 1200px) {
-    body { overflow-y: auto; }
-    .dashboard-container { height: auto; min-height: 100vh; }
+/* 2. LAPTOP */
+@media (max-width: 1400px) {
+    .dropdown-text { max-width: 250px; }
+    
+    .logo-caption-main { font-size: clamp(1.1rem, 2.2vh, 1.6rem); }
+    .header-band-title h2 { font-size: clamp(0.95rem, 1.8vh, 1.4rem); }
+    .main-stat h2 { font-size: clamp(1.6rem, 4vh, 2.8rem) !important; }
+    
+    .stats-grid { gap: 1.2vh; }
+    .glass-card { padding: 1.5vh 1.5vw; }
+}
 
-    .dropdown-text {
-        max-width: 250px;
+/* 3. TABLET (Flanshet) */
+@media (max-width: 1024px) {
+    body, html {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .dashboard-container {
+        height: auto;
+        min-height: 100vh;
+    }
+    .main-content-section {
+        overflow: visible;
+    }
+
+    .header-band-logos {
+        gap: 2vw;
+        padding: 1.5vh 3vw;
     }
 
     .stats-grid {
@@ -893,107 +1007,57 @@ body, html {
         grid-template-rows: auto;
     }
 
-    .residents-card { grid-row: auto; grid-column: span 1; }
-    .production-card { grid-column: span 2; }
-    .jobs-card { grid-column: span 1; }
-    .export-card { grid-column: span 1; }
-}
-
-/* TABLET (Flanshet) */
-@media (max-width: 900px) {
-    .header-band-logos {
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
+    .residents-card, .grid-column-wrapper {
+        grid-column: span 1;
     }
-
-    .header-logo-divider { display: none; }
-
-    .header-band-controls {
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .dropdown-text {
-        max-width: 160px;
-        font-size: 0.9rem;
+    .grid-column-wrapper:last-child {
+        grid-column: span 2;
     }
     
-    .services-dropdown-content {
-        min-width: 350px;
+    /* Removed split layout reset for tablet */
+}
+
+/* 4. PHONE (Mobile) */
+@media (max-width: 768px) {
+    .header-band-logos {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
     }
-
-    .stats-grid { grid-template-columns: 1fr; }
-
-    .residents-card, .production-card, .jobs-card, .export-card {
+    
+    .logo-group { flex-direction: column; gap: 8px; }
+    .header-logo-divider { display: none; }
+    
+    .header-band-controls {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .dropdowns-group { 
+        width: 100%; 
+        justify-content: center; 
+        flex-direction: column;
+    }
+    
+    .dropdown-text { max-width: 150px; text-transform: none; }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+    
+    .residents-card, .grid-column-wrapper {
         grid-column: span 1;
         grid-row: auto;
     }
-}
-
-/* PHONE (Mobile) */
-@media (max-width: 600px) {
-    .header-band-logos {
-        flex-direction: column;
-        gap: 20px;
-        padding: 2vh 5vw;
-    }
-
-    .dropdowns-group {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-        align-items: center;
-    }
-
-    .dropdown-text {
-        max-width: 130px;
-    }
-
-    .services-dropdown-btn {
-        padding: 6px 12px;
-        font-size: 0.85rem;
+    
+    .jobs-illustration-box {
+        display: none; /* Hide large illustrations on narrow phones to save space */
     }
     
-    .services-dropdown-content {
-        min-width: 280px;
-        left: -10vw; /* Center roughly on mobile */
+    .services-main-list {
+        max-height: none; /* Auto-expand */
     }
-
-    .logo-group {
-        flex-direction: column;
-        text-align: center;
-        gap: 8px;
-    }
-
-    .logo-caption { align-items: center; }
-
-    .header-logo {
-        height: 50px;
-    }
-
-    .logo-caption-main { font-size: 1.1rem; }
-    .logo-caption-top { font-size: 0.65rem; }
-
-    .header-band-title h2 {
-        font-size: 0.8rem;
-        padding: 1vh 3vw;
-    }
-
-    .main-stat h2 { font-size: 2.2rem; }
-
-    .production-flex {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .production-breakdown { width: 100%; }
-
-    .news-ticker-container {
-        height: auto;
-        min-height: 40px;
-        padding: 5px 0;
-    }
-
-    .ticker-badge { padding: 5px 10px; }
+    
+    .news-ticker-container { min-height: 48px; }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Яшнобод инновация технопарки | 2025 Сарҳисоби</title>
-    <link rel="stylesheet" href="style.css?v=2026.18">
+    <link rel="stylesheet" href="style.css?v=2026.31">
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,6 @@
                         <button class="services-dropdown-btn" id="servicesDropdownBtn">
                             <i data-lucide="layers"></i>
                             <span class="dropdown-text">Технопарк томонидан кўрсатиладиган хизмат турлари</span>
-                            <span class="dropdown-badge" id="services-badge" style="display:none;">+2</span>
                             <i data-lucide="chevron-down" class="chevron"></i>
                         </button>
                         <div class="services-dropdown-content" id="services-dropdown-content">
@@ -120,16 +119,78 @@
                     </div>
                 </div>
 
-                <!-- Economic Card - Production -->
-                <div class="card glass-card production-card">
-                    <div class="card-header">
-                        <i data-lucide="trending-up"></i>
-                        <span>Иқтисодий кўрсаткичлар (млрд сўм)</span>
+                <!-- COLUMN 2 WRAPPER -->
+                <div class="grid-column-wrapper" style="display: flex; flex-direction: column; gap: 1.8vh; height: 100%;">
+                    <!-- Services Card (Stretches downwards) -->
+                    <div class="card glass-card services-card" style="flex: 1;">
+                        <div class="card-header">
+                            <i data-lucide="layers"></i>
+                            <span>Кўрсатилаётган хизмат турлари</span>
+                            <span class="dropdown-badge white-badge" id="services-badge-main" style="display:none; margin-left: 8px;">+2</span>
+                        </div>
+                        <!-- List filled dynamically by script.js -->
+                        <div class="services-main-list" id="services-main-list" style="margin-top: 1vh;"></div>
                     </div>
-                    <div class="production-flex">
-                        <div class="main-stat">
-                            <h2 id="total-production">894,8</h2>
-                            <p>Умумий ишлаб чиқариш ҳажми</p>
+
+                    <!-- Jobs Card (Squeezed at the bottom) -->
+                    <div class="card glass-card jobs-card">
+                        <div class="card-header">
+                            <i data-lucide="briefcase"></i>
+                            <span>Инсон капитали</span>
+                        </div>
+                        <div class="card-body jobs-content-flex">
+                            <div class="main-stat">
+                                <div class="number-with-icon">
+                                    <div class="stat-icon-wrapper">
+                                        <i data-lucide="users" class="stat-icon-color"></i>
+                                    </div>
+                                    <h2><span id="jobs-created">1136</span><span class="stat-suffix">та</span></h2>
+                                </div>
+                                <p>Яратилган иш ўринлари</p>
+                            </div>
+                            <div class="jobs-illustration-box" style="transform: scale(0.8); transform-origin: bottom right;">
+                                <!-- Rasmga o'xshash korporativ dizayndagi SVG -->
+                                <svg class="colored-illustration" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Orqa fon - Yengil doiralar (Theme Glassy Background) -->
+                                    <circle cx="60" cy="65" r="50" fill="#EEF2F7"/>
+                                    <circle cx="60" cy="65" r="38" fill="#E0E7FF"/>
+                                    
+                                    <!-- O'ng tomondagi odam (O'rtacha ko'k) -->
+                                    <path d="M 75,100 C 75,70 100,70 100,100" fill="#3B82F6"/>
+                                    <circle cx="87.5" cy="55" r="12" fill="#93C5FD"/>
+                                    
+                                    <!-- Chap tomondagi odam (Slate kulrang) -->
+                                    <path d="M 20,100 C 20,70 45,70 45,100" fill="#64748B"/>
+                                    <circle cx="32.5" cy="55" r="12" fill="#94A3B8"/>
+                                    
+                                    <!-- O'rtadagi asosiy odam (Dashboard to'q ko'k guruh rahbari) -->
+                                    <path d="M 40,105 C 40,65 80,65 80,105" fill="#0A2560"/>
+                                    <circle cx="60" cy="50" r="15" fill="#2563EB"/>
+                                    
+                                    <!-- Dekorativ elementlar: O'sish grafikasi / Yulduzlar (Oltin rang - Gold) -->
+                                    <!-- Tepaga strelka (Gold) -->
+                                    <path d="M 85,45 L 85,25 L 90,25 L 80,10 L 70,25 L 75,25 L 75,45 Z" fill="#C9A84C"/>
+                                    <!-- Kichik yulduzlar/nuqtalar (Gold va to'q ko'k aralashmasi) -->
+                                    <circle cx="30" cy="25" r="3.5" fill="#C9A84C"/>
+                                    <circle cx="95" cy="45" r="4.5" fill="#0A2560"/>
+                                    <circle cx="45" cy="15" r="2.5" fill="#C9A84C"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN 3 WRAPPER -->
+                <div class="grid-column-wrapper" style="display: flex; flex-direction: column; gap: 1.8vh; height: 100%;">
+                    <!-- Economic Production Card -->
+                    <div class="card glass-card production-card">
+                        <div class="card-header">
+                            <i data-lucide="wallet"></i>
+                            <span>Иқтисодий кўрсаткич (млрд сўм)</span>
+                        </div>
+                        <div class="main-stat" style="margin-top: 5px;">
+                            <h2 id="total-production" style="font-size: clamp(2rem, 4.5vh, 4rem);">894,8</h2>
+                            <p style="margin-top: 5px; margin-bottom: 2vh;">Умумий ишлаб чиқариш ҳажми</p>
                         </div>
                         <div class="production-breakdown">
                             <div class="breakdown-item">
@@ -150,63 +211,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Jobs Card -->
-                <div class="card glass-card jobs-card">
-                    <div class="card-header">
-                        <i data-lucide="briefcase"></i>
-                        <span>Инсон капитали</span>
-                    </div>
-                    <div class="card-body jobs-content-flex">
-                        <div class="main-stat">
-                            <div class="number-with-icon">
-                                <div class="stat-icon-wrapper">
-                                    <i data-lucide="users" class="stat-icon-color"></i>
-                                </div>
-                                <h2><span id="jobs-created">1136</span><span class="stat-suffix">та</span></h2>
-                            </div>
-                            <p>Яратилган иш ўринлари</p>
+                    <!-- Export Geography (Stretches downwards to fill space) -->
+                    <div class="card glass-card export-card" style="flex: 1;">
+                        <div class="card-header">
+                            <i data-lucide="globe"></i>
+                            <span>Экспорт давлатлари</span>
                         </div>
-                        <div class="jobs-illustration-box">
-                            <!-- Rasmga o'xshash korporativ dizayndagi SVG -->
-                            <svg class="colored-illustration" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Orqa fon - Yengil doiralar (Theme Glassy Background) -->
-                                <circle cx="60" cy="65" r="50" fill="#EEF2F7"/>
-                                <circle cx="60" cy="65" r="38" fill="#E0E7FF"/>
-                                
-                                <!-- O'ng tomondagi odam (O'rtacha ko'k) -->
-                                <path d="M 75,100 C 75,70 100,70 100,100" fill="#3B82F6"/>
-                                <circle cx="87.5" cy="55" r="12" fill="#93C5FD"/>
-                                
-                                <!-- Chap tomondagi odam (Slate kulrang) -->
-                                <path d="M 20,100 C 20,70 45,70 45,100" fill="#64748B"/>
-                                <circle cx="32.5" cy="55" r="12" fill="#94A3B8"/>
-                                
-                                <!-- O'rtadagi asosiy odam (Dashboard to'q ko'k guruh rahbari) -->
-                                <path d="M 40,105 C 40,65 80,65 80,105" fill="#0A2560"/>
-                                <circle cx="60" cy="50" r="15" fill="#2563EB"/>
-                                
-                                <!-- Dekorativ elementlar: O'sish grafikasi / Yulduzlar (Oltin rang - Gold) -->
-                                <!-- Tepaga strelka (Gold) -->
-                                <path d="M 85,45 L 85,25 L 90,25 L 80,10 L 70,25 L 75,25 L 75,45 Z" fill="#C9A84C"/>
-                                <!-- Kichik yulduzlar/nuqtalar (Gold va to'q ko'k aralashmasi) -->
-                                <circle cx="30" cy="25" r="3.5" fill="#C9A84C"/>
-                                <circle cx="95" cy="45" r="4.5" fill="#0A2560"/>
-                                <circle cx="45" cy="15" r="2.5" fill="#C9A84C"/>
-                            </svg>
+                        <div class="countries-list">
+                            <!-- Dynamic -->
                         </div>
-                    </div>
-                </div>
-
-                <!-- Export Geography -->
-                <div class="card glass-card export-card">
-                    <div class="card-header">
-                        <i data-lucide="globe"></i>
-                        <span>Экспорт давлатлари</span>
-                    </div>
-                    <div class="countries-list">
-                        <!-- Dynamic -->
                     </div>
                 </div>
             </section>
@@ -245,7 +259,7 @@
         </div>
     </main>
 
-    <script src="script.js?v=2026.18"></script>
+    <script src="script.js?v=2026.27"></script>
     <script>
         lucide.createIcons();
     </script>
