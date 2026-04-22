@@ -47,7 +47,7 @@ const dashboardData = {
         contactedCount: 500,
         appliedCount: 8,
         newResidents: 4,
-        jobsCreated: 102,
+        jobsCreated: 1238,
         totalProduction: 159.7,
         domesticSales: 112.3,
         exportSales: 47.4,
@@ -194,6 +194,12 @@ function switchYear(year) {
     const displayStyle = (year === 2026) ? 'inline-flex' : 'none';
     if (servicesBadge) servicesBadge.style.display = displayStyle;
     if (servicesBadgeMain) servicesBadgeMain.style.display = displayStyle;
+
+    // Growth Badge boshqarish (Jobs)
+    const jobsGrowthBadge = document.getElementById('jobs-growth-badge');
+    if (jobsGrowthBadge) {
+        jobsGrowthBadge.style.display = (year === 2026) ? 'inline-flex' : 'none';
+    }
 
     // Hozirgi script elementlariga iconkalarni qo'llash
     lucide.createIcons();
