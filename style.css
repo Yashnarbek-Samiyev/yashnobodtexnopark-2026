@@ -197,9 +197,9 @@ body, html {
 .growth-badge {
     background-color: #10B981;
     color: white;
-    font-size: 0.95rem; /* Larger font */
-    font-weight: 800;
-    padding: 4px 14px; /* Larger padding */
+    font-size: 1.2rem; /* Increased from 0.95rem */
+    font-weight: 900;
+    padding: 6px 18px; /* Increased padding */
     border-radius: 20px;
     margin-left: 12px;
     display: inline-flex;
@@ -662,7 +662,13 @@ body, html {
 
 .country-pill:hover { background: #EEF2F7; }
 
-.flag { font-size: 1.3rem; }
+.country-flag-img {
+    width: 24px;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+}
 
 /* =========================================================
    Sectors Header — "17 та фаолият соҳалари сони"

@@ -18,10 +18,10 @@ const dashboardData = {
         domesticPercent: 80.6,
         exportPercent: 19.4,
         countries: [
-            { name: 'Қирғизистон', flag: '🇰🇬' },
-            { name: 'Қозоғистон', flag: '🇰🇿' },
-            { name: 'Тожикистон', flag: '🇹🇯' },
-            { name: 'Россия', flag: '🇷🇺' }
+            { name: 'Қирғизистон', code: 'kg' },
+            { name: 'Қозоғистон', code: 'kz' },
+            { name: 'Тожикистон', code: 'tj' },
+            { name: 'Россия', code: 'ru' }
         ],
         sectors: [
             { name: 'Электроника',         icon: 'cpu', desc: 'Электроника ва приборсозлик соҳасида юқори технологик маҳсулотлар, маиший техника ва инновацион қурилмалар ишлаб чиқариш лойиҳалари.' },
@@ -57,10 +57,10 @@ const dashboardData = {
         domesticPercent: 70.3,
         exportPercent: 29.7,
         countries: [
-            { name: 'Қозоғистон', flag: '🇰🇿' },
-            { name: 'Қирғизистон', flag: '🇰🇬' },
-            { name: 'Тожикистон', flag: '🇹🇯' },
-            { name: 'Россия', flag: '🇷🇺' }
+            { name: 'Қозоғистон', code: 'kz' },
+            { name: 'Қирғизистон', code: 'kg' },
+            { name: 'Тожикистон', code: 'tj' },
+            { name: 'Россия', code: 'ru' }
         ],
         sectors: [
             { name: 'Электроника',         icon: 'cpu', desc: 'Электроника ва приборсозлик соҳасида юқори технологик маҳсулотлар, маиший техника ва инновацион қурилмалар ишлаб чиқариш лойиҳалари.' },
@@ -195,11 +195,13 @@ function switchYear(year) {
     if (servicesBadge) servicesBadge.style.display = displayStyle;
     if (servicesBadgeMain) servicesBadgeMain.style.display = displayStyle;
 
-    // Growth Badge boshqarish (Jobs)
+    // Growth Badge boshqarish (Jobs & Residents)
     const jobsGrowthBadge = document.getElementById('jobs-growth-badge');
-    if (jobsGrowthBadge) {
-        jobsGrowthBadge.style.display = (year === 2026) ? 'inline-flex' : 'none';
-    }
+    const residentsGrowthBadge = document.getElementById('residents-growth-badge');
+    
+    const showGrowth = (year === 2026) ? 'inline-flex' : 'none';
+    if (jobsGrowthBadge) jobsGrowthBadge.style.display = showGrowth;
+    if (residentsGrowthBadge) residentsGrowthBadge.style.display = showGrowth;
 
     // Hozirgi script elementlariga iconkalarni qo'llash
     lucide.createIcons();
@@ -256,7 +258,14 @@ function switchYear(year) {
     data.countries.forEach(c => {
         const pill = document.createElement('div');
         pill.className = 'country-pill';
-        pill.innerHTML = `<span class="flag">${c.flag}</span> ${c.name}`;
+        pill.innerHTML = `
+            <img src="https://flagcdn.com/w40/${c.code}.png" 
+                 srcset="https://flagcdn.com/w80/${c.code}.png 2x" 
+                 width="24" 
+                 alt="${c.name}" 
+                 class="country-flag-img">
+            ${c.name}
+        `;
         countriesContainer.appendChild(pill);
     });
 
