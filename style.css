@@ -1051,6 +1051,21 @@ body, html {
 
 /* 4. PHONE (Mobile) */
 @media (max-width: 768px) {
+    body, html {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .dashboard-container {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+    .main-content-section {
+        overflow: visible;
+        height: auto;
+        flex: none;
+    }
+
     .header-band-logos {
         flex-direction: column;
         gap: 15px;
